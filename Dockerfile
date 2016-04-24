@@ -1,8 +1,6 @@
 FROM jamesmcclain/hadoop:1
 MAINTAINER James McClain <james.mcclain@gmail.com>
 
-USER root
-
 ADD zookeeper-3.4.8.tar.gz /opt
 ADD accumulo-1.7.1-bin.tar.gz /opt
 ADD zoo.cfg /opt/zookeeper-3.4.8/conf
