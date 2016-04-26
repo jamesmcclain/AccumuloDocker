@@ -32,6 +32,21 @@
     <description>comma separated list of zookeeper servers</description>
   </property>
 
+ <property>
+    <name>general.vfs.classpaths</name>
+    <value>hdfs://leader:30000/accumulo-classpath/[^.].*.jar</value>
+    <description>Configuration for a system level vfs classloader. Accumulo jars can be configured here and loaded out of HDFS.</description>
+  </property>
+
+  <property>
+    <name>general.dynamic.classpaths</name>
+    <value>
+      /opt/accumulo-1.7.1/lib/ext/[^.].*.jar,
+      hdfs://leader:30000/accumulo-classpath/[^.].*.jar
+    </value>
+    <description>Classpaths that accumulo checks for updates and class files.</description>
+  </property>
+
   <property>
     <name>logger.dir.walog</name>
     <value>walogs</value>
