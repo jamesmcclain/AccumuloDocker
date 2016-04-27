@@ -8,7 +8,7 @@ by pulling it from Docker Hub or building it using the provided Makefile.
 To pull the image from Docker Hub, type:
 
 ```bash
-docker pull jamesmcclain/accumulo:0
+docker pull jamesmcclain/accumulo:1
 ```
 
 ### Building ###
@@ -26,7 +26,10 @@ The leader contains a YARN Resource Manager, a Hadoop NameNode, and a MapReduce 
 To run the leader , type:
 
 ```bash
-docker run -it --rm -p 50095:50095 -h leader --name leader --entrypoint /scripts/leader.sh accumulo:0
+docker run -it --rm -p 50095:50095 \
+       -h leader --name leader \
+       --entrypoint /scripts/leader.sh \
+       jamesmcclain/accumulo:1
 ```
 
 There are lots of things in this one container.
@@ -39,7 +42,7 @@ The follower contains a YARN NodeManager, a Hadoop DataNode, and an Accumulo tab
 To run a follower, type:
 
 ```bash
-docker run -it --rm --link leader accumulo:0
+docker run -it --rm --link leader jamesmcclain/accumulo:1
 ```
 
 By some means, you must now add an entry in the leader's `/etc/hosts` file (or DNS) to allow it to resolve the follower's name.
