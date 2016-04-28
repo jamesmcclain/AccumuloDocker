@@ -35,7 +35,6 @@
  <property>
     <name>general.vfs.classpaths</name>
     <value>hdfs://leader:30000/accumulo-classpath/[^.].*.jar</value>
-    <description>Configuration for a system level vfs classloader. Accumulo jars can be configured here and loaded out of HDFS.</description>
   </property>
 
   <property>
@@ -44,7 +43,6 @@
       /opt/accumulo-1.7.1/lib/ext/[^.].*.jar,
       hdfs://leader:30000/accumulo-classpath/[^.].*.jar
     </value>
-    <description>Classpaths that accumulo checks for updates and class files.</description>
   </property>
 
   <property>
@@ -68,22 +66,22 @@
 
   <property>
     <name>tserver.memory.maps.max</name>
-    <value>512M</value>
+    <value>1G</value>
   </property>
 
   <property>
     <name>tserver.memory.maps.native.enabled</name>
-    <value>false</value>
+    <value>true</value>
   </property>
 
   <property>
     <name>tserver.cache.data.size</name>
-    <value>30M</value>
+    <value>128M</value>
   </property>
 
   <property>
     <name>tserver.cache.index.size</name>
-    <value>80M</value>
+    <value>128M</value>
   </property>
 
   <property>
@@ -133,12 +131,12 @@
 
   <property>
     <name>tserver.sort.buffer.size</name>
-    <value>50M</value>
+    <value>200M</value>
   </property>
 
   <property>
     <name>tserver.walog.max.size</name>
-    <value>512M</value>
+    <value>1G</value>
   </property>
 
   <property>
