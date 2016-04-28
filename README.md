@@ -8,7 +8,7 @@ by pulling it from Docker Hub or building it using the provided Makefile.
 To pull the image from Docker Hub, type:
 
 ```bash
-docker pull jamesmcclain/accumulo:1
+docker pull jamesmcclain/accumulo:2
 ```
 
 ### Building ###
@@ -26,10 +26,11 @@ The leader contains a YARN Resource Manager, a Hadoop NameNode, and a MapReduce 
 To run the leader , type:
 
 ```bash
-docker run -it --rm -p 50095:50095 \
-       -h leader --name leader \
+docker run -it --rm \
+       -p 50095:50095 \
+       --net=accumulo --hostname follower1 --name follower1 \
        --entrypoint /scripts/leader.sh \
-       jamesmcclain/accumulo:1
+       jamesmcclain/accumulo:2
 ```
 
 There are lots of things in this one container.
@@ -42,14 +43,11 @@ The follower contains a YARN NodeManager, a Hadoop DataNode, and an Accumulo tab
 To run a follower, type:
 
 ```bash
-docker run -it --rm --link leader jamesmcclain/accumulo:1
-```
-
-By some means, you must now add an entry in the leader's `/etc/hosts` file (or DNS) to allow it to resolve the follower's name.
-After you have done that, you can type the command below on the follower:
-
-```bash
-/scripts/follower.sh
+docker network create --driver bridge accumulo
+docker run -it --rm \
+       --net=accumulo --hostname follower1 --name follower1 \
+       --entrypoint /scripts/follower.sh
+       jamesmcclain/accumulo:2
 ```
 
 You should see that a new Hadoop node and a new Accumulo node have joined.
