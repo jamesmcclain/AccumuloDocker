@@ -8,7 +8,7 @@ by pulling it from Docker Hub or building it using the provided Makefile.
 To pull the image from Docker Hub, type:
 
 ```bash
-docker pull jamesmcclain/accumulo:2
+docker pull jamesmcclain/accumulo:3
 ```
 
 ### Building ###
@@ -19,6 +19,9 @@ To build the image with the provided Makefile, type:
 make
 ```
 
+In order for this to succeed, the file `accumulo-2.0.0-SNAPSHOT-bin.tar.gz` must be present in the root directory of this repository.
+It can be downloaded or [built from source](https://github.com/apache/accumulo).
+
 ## Running the Leader ###
 
 The leader contains a YARN Resource Manager, a Hadoop NameNode, and a MapReduce History Server, a ZooKeeper master, an Accumulo monitor, an Accumulo master, an Accumulo gc, an Accumulo tracer, an Accumulo tablet server, and everything in the follower described below.
@@ -26,11 +29,8 @@ The leader contains a YARN Resource Manager, a Hadoop NameNode, and a MapReduce 
 To run the leader , type:
 
 ```bash
-docker run -it --rm \
-       -p 50095:50095 \
-       --net=accumulo --hostname follower1 --name follower1 \
-       --entrypoint /scripts/leader.sh \
-       jamesmcclain/accumulo:2
+docker network create --driver bridge geowave
+docker run -it --rm -p 9995:9995 --net=geowave --hostname leader --name leader jamesmcclain/accumulo:3
 ```
 
 There are lots of things in this one container.
@@ -43,11 +43,7 @@ The follower contains a YARN NodeManager, a Hadoop DataNode, and an Accumulo tab
 To run a follower, type:
 
 ```bash
-docker network create --driver bridge accumulo
-docker run -it --rm \
-       --net=accumulo --hostname follower1 --name follower1 \
-       --entrypoint /scripts/follower.sh
-       jamesmcclain/accumulo:2
+docker run -it --rm --net=geowave --hostname follower1 --name follower1 --entrypoint /scripts/follower.sh jamesmcclain/accumulo:3
 ```
 
 You should see that a new Hadoop node and a new Accumulo node have joined.
