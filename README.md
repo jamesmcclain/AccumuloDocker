@@ -20,7 +20,7 @@ make
 ```
 
 In order for this to succeed, the file `accumulo-2.0.0-SNAPSHOT-bin.tar.gz` must be present in the root directory of this repository.
-It can be downloaded or [built from source](https://github.com/apache/accumulo).
+It can be [built from source](https://github.com/apache/accumulo) or possibly downloaded from somewhere.
 
 ## Running the Leader ###
 
