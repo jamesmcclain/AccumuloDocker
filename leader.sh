@@ -6,4 +6,4 @@ mkdir -p $ACCUMULO_LOG_DIR && chown hdfs:hdfs -R $ACCUMULO_LOG_DIR
 /scripts/zookeeper.sh
 /scripts/accumulo-leader.sh
 /scripts/accumulo-follower.sh
-bash
+$ACCUMULO_HOME/bin/accumulo shell -u root -p password
