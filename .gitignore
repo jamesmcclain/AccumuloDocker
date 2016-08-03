@@ -1,4 +1,4 @@
 zookeeper-3.4.8.tar.gz
-accumulo-2.0.0-SNAPSHOT-bin.tar.gz
-accumulo-2.0.0-SNAPSHOT/
+accumulo-*-bin.tar.gz
+accumulo-*/
 libaccumulo.so

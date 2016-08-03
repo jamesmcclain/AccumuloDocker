@@ -32,16 +32,15 @@
     <description>comma separated list of zookeeper servers</description>
   </property>
 
- <property>
-    <name>general.vfs.classpaths</name>
-    <value>hdfs://leader:30000/accumulo-classpath/[^.].*.jar</value>
-  </property>
+ <!-- <property> -->
+ <!--    <name>general.vfs.classpaths</name> -->
+ <!--    <value>hdfs://leader:30000/accumulo-classpath/[^.].*.jar</value> -->
+ <!--  </property> -->
 
   <property>
     <name>general.dynamic.classpaths</name>
     <value>
-      /opt/accumulo-2.0.0-SNAPSHOT/lib/ext/[^.].*.jar,
-      hdfs://leader:30000/accumulo-classpath/[^.].*.jar
+      /opt/accumulo-1.7.2/lib/ext/[^.].*.jar
     </value>
   </property>
 
