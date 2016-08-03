@@ -30,7 +30,7 @@ To run the leader , type:
 
 ```bash
 docker network create --driver bridge geowave
-docker run -it --rm -p 9995:9995 --net=geowave --hostname leader --name leader jamesmcclain/accumulo:7
+docker run -it --rm -p 9995:50095 --net=geowave --hostname leader --name leader jamesmcclain/accumulo:7
 ```
 
 There are lots of things in this one container.
