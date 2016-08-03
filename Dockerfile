@@ -12,7 +12,7 @@ RUN groupadd -r zookeeper && useradd -r -g zookeeper zookeeper \
     && chown zookeeper:zookeeper -R /opt/zookeeper-3.4.8/ \
     && chown hdfs:hdfs -R /opt/accumulo-1.7.2
 
-EXPOSE 9995
+EXPOSE 50095
 
 ENV ZOOKEEPER_HOME /opt/zookeeper-3.4.8
 ENV ACCUMULO_HOME /opt/accumulo-1.7.2
