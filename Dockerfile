@@ -1,4 +1,4 @@
-FROM jamesmcclain/hadoop:1
+FROM jamesmcclain/hadoop:8u111
 MAINTAINER James McClain <james.mcclain@gmail.com>
 
 ADD zookeeper-3.4.8.tar.gz /opt
