@@ -8,7 +8,7 @@ by pulling it from Docker Hub or building it using the provided Makefile.
 To pull the image from Docker Hub, type:
 
 ```bash
-docker pull jamesmcclain/accumulo:7
+docker pull jamesmcclain/accumulo:8u111
 ```
 
 ### Building ###
@@ -30,7 +30,7 @@ To run the leader , type:
 
 ```bash
 docker network create --driver bridge geowave
-docker run -it --rm -p 9995:50095 --net=geowave --hostname leader --name leader jamesmcclain/accumulo:7
+docker run -it --rm -p 9995:50095 --net=geowave --hostname leader --name leader jamesmcclain/accumulo:8u111
 ```
 
 There are lots of things in this one container.
@@ -43,7 +43,7 @@ The follower contains a YARN NodeManager, a Hadoop DataNode, and an Accumulo tab
 To run a follower, type:
 
 ```bash
-docker run -it --rm --net=geowave --hostname follower1 --name follower1 --entrypoint /scripts/follower.sh jamesmcclain/accumulo:7
+docker run -it --rm --net=geowave --hostname follower1 --name follower1 --entrypoint /scripts/follower.sh jamesmcclain/accumulo:8u111
 ```
 
 You should see that a new Hadoop node and a new Accumulo node have joined.

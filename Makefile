@@ -1,5 +1,5 @@
 all: libaccumulo.so accumulo-1.7.2-bin.tar.gz zookeeper-3.4.8.tar.gz
-	docker build -t jamesmcclain/accumulo:7 .
+	docker build -t jamesmcclain/accumulo:8u111 .
 
 zookeeper-3.4.8.tar.gz:
 	curl -C - -O 'http://apache.osuosl.org/zookeeper/zookeeper-3.4.8/zookeeper-3.4.8.tar.gz'
